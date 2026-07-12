@@ -1,0 +1,583 @@
+{
+    "application_requirements": {
+        "architecture_and_design": {
+            "design_approach": "PC-first, mobile-second",
+            "color_palette": {
+                "coca_cola_dark_red": "#9C0101",
+                "coca_cola_red": "#F40009",
+                "casual_maroon": "#35141B",
+                "pungent_red": "#5E071A",
+                "dark_ruby": "#750E25",
+                "shiny_burgundy": "#901B2B",
+                "medium_ruby": "#AD272E",
+                "business_red": "#991821",
+                "black": "#000000",
+                "soft_white": "#FFFFF7",
+                "white": "#FFFFFF"
+            },
+            "design_considerations": {
+                "app_background": {
+                    "width": "100%",
+                    "height": "100%",
+                    "background": "black",
+                    "opacity": "100%"
+                },
+                "navbar": {
+                    "width": "10% of parent",
+                    "height": "100%",
+                    "background": "casual_maroon",
+                    "opacity": "90%"
+                },
+                "header": {
+                    "width": "90% of parent",
+                    "height": "10% of parent",
+                    "background": "white",
+                    "opacity": "90%"
+                },
+                "body": {
+                    "width": "90% of parent",
+                    "height": "82% of parent between header and footer",
+                    "background": "soft_white",
+                    "opacity": "90%"
+                },
+                "footer": {
+                    "width": "90% of parent",
+                    "height": "8% of parent",
+                    "background": "white",
+                    "opacity": "90%"
+                }
+            }
+        },
+        "rbac_framework": {
+            "description": "Centralized Role-Based Access Control engine governing UI visibility, data scoping, and CRUD operations.",
+            "roles": [
+                {
+                    "name": "Admin",
+                    "description": "System administrator with global oversight."
+                },
+                {
+                    "name": "Trainer",
+                    "description": "Instructs and evaluates assigned trainees.",
+                    "aliases": [
+                        "Instructor"
+                    ]
+                },
+                {
+                    "name": "Trainee",
+                    "description": "Employee undergoing training.",
+                    "aliases": [
+                        "Student",
+                        "Employee"
+                    ]
+                }
+            ],
+            "menu_access_matrix": {
+                "Home": [
+                    "Admin",
+                    "Trainer",
+                    "Trainee"
+                ],
+                "Register User": [
+                    "Trainer",
+                    "Trainee"
+                ],
+                "View Trainees": [
+                    "Trainer",
+                    "Trainee"
+                ],
+                "Settings": [
+                    "Admin"
+                ],
+                "Help": [
+                    "Admin",
+                    "Trainer",
+                    "Trainee"
+                ],
+                "Exit": [
+                    "Admin",
+                    "Trainer",
+                    "Trainee"
+                ]
+            },
+            "data_scoping_rules": {
+                "Admin": "Global Scope. Full access to all locations, modules, programs, users, and assets.",
+                "Trainer": "Assigned Scope. Can only view and edit data for Trainees actively assigned to them, and modules they are certified to teach.",
+                "Trainee": "Self Scope. Can only view their own profile, scores, assigned schedules, and enrolled modules."
+            },
+            "crud_permissions": {
+                "training_programs_and_modules": {
+                    "Admin": [
+                        "Create",
+                        "Read",
+                        "Update",
+                        "Delete"
+                    ],
+                    "Trainer": [
+                        "Read"
+                    ],
+                    "Trainee": [
+                        "Read"
+                    ]
+                },
+                "trainee_evaluations_and_scores": {
+                    "Admin": [
+                        "Read"
+                    ],
+                    "Trainer": [
+                        "Create",
+                        "Read",
+                        "Update"
+                    ],
+                    "Trainee": [
+                        "Read"
+                    ]
+                },
+                "attendance_records": {
+                    "Admin": [
+                        "Read",
+                        "Update"
+                    ],
+                    "Trainer": [
+                        "Create",
+                        "Read",
+                        "Update"
+                    ],
+                    "Trainee": [
+                        "Read"
+                    ]
+                },
+                "physical_assets_and_locations": {
+                    "Admin": [
+                        "Create",
+                        "Read",
+                        "Update",
+                        "Delete"
+                    ],
+                    "Trainer": [
+                        "Read"
+                    ],
+                    "Trainee": [
+                        "Read"
+                    ]
+                },
+                "incident_reports": {
+                    "Admin": [
+                        "Read",
+                        "Update",
+                        "Delete"
+                    ],
+                    "Trainer": [
+                        "Create",
+                        "Read",
+                        "Update"
+                    ],
+                    "Trainee": [
+                        "Create"
+                    ]
+                }
+            }
+        },
+        "resource_and_facility_management": {
+            "locations": {
+                "description": "Physical training sites.",
+                "attributes": [
+                    "Location ID",
+                    "Name",
+                    "Address",
+                    "Geofence Coordinates",
+                    "Max Trainee Capacity"
+                ]
+            },
+            "assets": {
+                "description": "Physical equipment required for training.",
+                "attributes": [
+                    "Asset ID",
+                    "Type",
+                    "Status",
+                    "Assigned Location"
+                ]
+            }
+        },
+        "scheduling_and_rostering": {
+            "calendar_engine": {
+                "description": "Handles complex physical booking requirements.",
+                "business_rules": [
+                    "Must match Trainer availability + Trainee availability + Asset availability + Location capacity.",
+                    "Prevent scheduling if required physical asset is marked 'In Maintenance'."
+                ]
+            }
+        },
+        "safety_and_incident_reporting": {
+            "incident_logging": {
+                "description": "Immediate logging of safety breaches or asset damage during physical training.",
+                "fields": [
+                    "Date & Time",
+                    "Location/Terminal",
+                    "Involved Trainee & Trainer",
+                    "Asset ID",
+                    "Incident Description",
+                    "Photo Attachments"
+                ]
+            }
+        },
+        "global_ui_and_navigation": {
+            "left_navigation_bar": {
+                "styling": "Theme-colored background utilizing the specified red/maroon color palette",
+                "mobile_behavior": "Collapsible menu (mobile-second scaling)",
+                "menu_items": "Rendered dynamically based on rbac_framework.menu_access_matrix"
+            }
+        },
+        "screens": {
+            "home": {
+                "description": "Driver Training Intelligence dashboard providing role-based insights, training analytics, compliance monitoring, trainee performance tracking and operational metrics.",
+                "layout": {
+                    "header": {
+                        "title": "Driver Training Intelligence",
+                        "filters": [
+                            {
+                                "name": "Role Selector",
+                                "type": "dropdown",
+                                "options": [
+                                    "Admin",
+                                    "Trainer",
+                                    "Trainee"
+                                ]
+                            }
+                        ]
+                    }
+                },
+                "dashboard_widgets": {
+                    "summary_cards": [
+                        {
+                            "title": "Field Training",
+                            "icon": "Field Training",
+                            "metric": "Total Active Field Training Activities"
+                        },
+                        {
+                            "title": "Classroom Sessions",
+                            "icon": "Classroom",
+                            "metric": "Total Classroom Training Sessions"
+                        },
+                        {
+                            "title": "Under Review",
+                            "icon": "Review",
+                            "metric": "Pending Reviews and Evaluations"
+                        },
+                        {
+                            "title": "Rewarded Licenses",
+                            "icon": "License",
+                            "metric": "Total Licenses Awarded"
+                        }
+                    ],
+                    "analytics": [
+                        {
+                            "title": "Pass vs Fail Performance Analytics",
+                            "type": "Pie Chart",
+                            "data_points": [
+                                "Pass",
+                                "Fail"
+                            ],
+                            "show_percentage": true
+                        },
+                        {
+                            "title": "Milestone Distribution Profiles",
+                            "type": "Bar Chart",
+                            "filters": [
+                                "All",
+                                "New Driver",
+                                "Traveling"
+                            ],
+                            "categories": [
+                                "Unscheduled",
+                                "Classroom Blocks",
+                                "Road Trip",
+                                "Standard Yard",
+                                "Modernized Yard",
+                                "Completed"
+                            ]
+                        }
+                    ],
+                    "performance_section": {
+                        "title": "Top Performing Employees",
+                        "columns": [
+                            "Employee Name",
+                            "Accuracy Score"
+                        ]
+                    },
+                    "compliance_section": {
+                        "title": "Compliance Blockers & Action Items",
+                        "columns": [
+                            "Candidate",
+                            "Verification Status"
+                        ],
+                        "status_types": [
+                            "License Pending",
+                            "Medical Exam Missing",
+                            "Awaiting Dispatch Signoff"
+                        ]
+                    },
+                    "weekly_metrics": {
+                        "title": "Weekly Metrics Analytics",
+                        "filters": [
+                            "Date",
+                            "Location"
+                        ],
+                        "locations": [
+                            "All Locations",
+                            "Chicago Facility",
+                            "Dallas Hub",
+                            "Atlanta Center"
+                        ],
+                        "columns": [
+                            "Training Track",
+                            "Count Structure",
+                            "Capacity Distribution"
+                        ]
+                    }
+                },
+                "role_based_views": {
+                    "admin": {
+                        "widgets": [
+                            "Field Training",
+                            "Classroom Sessions",
+                            "Under Review",
+                            "Rewarded Licenses",
+                            "Pass vs Fail Performance Analytics",
+                            "Top Performing Employees",
+                            "Milestone Distribution Profiles",
+                            "Compliance Blockers & Action Items",
+                            "Weekly Metrics Analytics"
+                        ]
+                    },
+                    "trainer": {
+                        "widgets": [
+                            "Assigned Trainee Progress",
+                            "Pending Evaluations",
+                            "Upcoming Classes",
+                            "Recent Incident Reports",
+                            "Performance Analytics",
+                            "Milestone Distribution Profiles"
+                        ]
+                    },
+                    "trainee": {
+                        "widgets": [
+                            "Current Training Progress",
+                            "Upcoming Class Schedule",
+                            "Recent Scores & Feedback",
+                            "Attendance Summary",
+                            "Course Completion Progress"
+                        ]
+                    }
+                }
+            },
+            "register_user": {
+                "description": "Form for user details and document attachments.",
+                "configurable_forms": [
+                    "New Driver Form",
+                    "Traveling Form",
+                    "Student Details Form"
+                ],
+                "form_fields": [
+                    "Student name",
+                    "Location",
+                    "Phone number",
+                    "Alternate phone number",
+                    "Is traveling student",
+                    "Driver license document",
+                    "Commercial learners permit document",
+                    "DOT medical examiners certificate document"
+                ],
+                "workflows": {
+                    "verification_process": {
+                        "on_reject": "Notify trainee to re-upload documents.",
+                        "on_approve": "Proceed to role-specific form checks."
+                    },
+                    "traveling_candidate_flow": "If traveling, trainee fills out traveling forms; both trainee & trainer acknowledge and sign (Sign-on-glass supported).",
+                    "new_driver_flow": "If new driver, trainee fills out new driver form; both trainer & trainee acknowledge and sign (Sign-on-glass supported).",
+                    "finalization": "Trainer sets the training begin date."
+                }
+            },
+            "view_trainees": {
+                "list_view": {
+                    "columns": [
+                        "Name",
+                        "Location",
+                        "Phone number",
+                        "Trainer"
+                    ],
+                    "actions": [
+                        {
+                            "icon": "Edit",
+                            "description": "Navigates to the 6 Modules edit screen."
+                        },
+                        {
+                            "icon": "View Status/Report",
+                            "description": "Opens current status and reports of the trainee."
+                        }
+                    ]
+                }
+            },
+            "six_modules_wizard": {
+                "navigation_style": "Step-by-step (Next and Back buttons)",
+                "modules": [
+                    {
+                        "id": 1,
+                        "title": "Student Details / Forms",
+                        "content": "Contains basic student details, license/medical documents, traveling form, and new driver's form."
+                    },
+                    {
+                        "id": 2,
+                        "title": "Attendance",
+                        "content": "5-week attendance report.",
+                        "trainer_actions": [
+                            "Mark present (Geofence validation available)",
+                            "Mark late",
+                            "Mark absentee",
+                            "Add attendance feedback/notes"
+                        ]
+                    },
+                    {
+                        "id": 3,
+                        "title": "Guide / Module Covered Report",
+                        "content": "List of modules and physical lesson class details.",
+                        "trainer_actions": [
+                            "Enter date covered for specific topics",
+                            "Link specific Asset ID used for module"
+                        ]
+                    },
+                    {
+                        "id": 4,
+                        "title": "3 Training Records",
+                        "content": "Student instructional training record and 3 primary training records (all data configurable).",
+                        "trainer_actions": [
+                            "Enter date covered",
+                            "Enter hours covered per training"
+                        ]
+                    },
+                    {
+                        "id": 5,
+                        "title": "Test",
+                        "content": "Conduct 3 training tests.",
+                        "trainer_actions": [
+                            "Mark scores",
+                            "Fill test evaluation form",
+                            "Provide textual feedback for trainee review"
+                        ],
+                        "business_rules": [
+                            "Trainee has a maximum of 3 attempts to pass.",
+                            "Failure results in no license rewarded."
+                        ]
+                    },
+                    {
+                        "id": 6,
+                        "title": "Evaluation Reports",
+                        "content": "Summary and individual physical training records.",
+                        "environmental_tracking": "Option to log Weather Conditions and Traffic Levels for Behind-The-Wheel (BTW) evaluations.",
+                        "forms": [
+                            {
+                                "name": "Standardized pre trip eval",
+                                "config": true,
+                                "acknowledge": true,
+                                "requires_signature": "Sign-on-glass immediately after physical eval"
+                            },
+                            {
+                                "name": "Coupling/uncoupling tests",
+                                "config": true,
+                                "acknowledge": true,
+                                "requires_signature": "Sign-on-glass immediately after physical eval"
+                            },
+                            {
+                                "name": "Standardized maneuver eval",
+                                "config": true,
+                                "acknowledge": true,
+                                "requires_signature": "Sign-on-glass immediately after physical eval"
+                            },
+                            {
+                                "name": "BTW road eval",
+                                "config": true,
+                                "acknowledge": true,
+                                "requires_signature": "Sign-on-glass immediately after physical eval"
+                            },
+                            {
+                                "name": "5 week final result",
+                                "config": false,
+                                "acknowledge": false
+                            }
+                        ],
+                        "business_rules": [
+                            "License is rewarded based on the final result percentage."
+                        ]
+                    }
+                ]
+            },
+            "admin_settings": {
+                "access": "Restricted by rbac_framework.crud_permissions.",
+                "program_management": {
+                    "view": "List of Programs from Config database under 'Program' heading.",
+                    "actions": [
+                        "Add",
+                        "Edit",
+                        "Delete"
+                    ],
+                    "add_program_fields": [
+                        "Program name",
+                        "Modules"
+                    ]
+                },
+                "question_management": {
+                    "relationship": "Questions belong to specific modules within respective programs.",
+                    "actions": [
+                        "Add",
+                        "Edit",
+                        "Delete",
+                        "Save",
+                        "Cancel"
+                    ],
+                    "add_question_fields": [
+                        {
+                            "field_name": "Program name",
+                            "type": "dropdown"
+                        },
+                        {
+                            "field_name": "Modules",
+                            "type": "dropdown"
+                        },
+                        {
+                            "field_name": "Question title",
+                            "type": "text"
+                        },
+                        {
+                            "field_name": "Row",
+                            "type": "number"
+                        },
+                        {
+                            "field_name": "Column",
+                            "type": "number"
+                        },
+                        {
+                            "field_name": "Page number",
+                            "type": "number"
+                        },
+                        {
+                            "field_name": "Page title",
+                            "type": "text"
+                        },
+                        {
+                            "field_name": "Group title",
+                            "type": "text"
+                        },
+                        {
+                            "field_name": "Required",
+                            "type": "toggle"
+                        },
+                        {
+                            "field_name": "Question type",
+                            "type": "dropdown"
+                        }
+                    ],
+                    "dynamic_behavior": "If Question type is 'dropdown', display fields to add options. If 'number/text', leave empty."
+                }
+            }
+        }
+    }
+}

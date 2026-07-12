@@ -1,0 +1,327 @@
+:root {
+    --sidebar-bg: #1e293b;
+    --main-bg: #f1f5f9;
+    --primary: #3b82f6;
+    --danger: #ef4444;
+    --text: #334155;
+    --white: #ffffff;
+    --border: #e2e8f0;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    color: var(--text);
+    background: var(--main-bg);
+}
+
+.admin-layout {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 260px;
+    background: var(--sidebar-bg);
+    color: white;
+    padding: 2rem;
+    position: fixed;
+    height: 100vh;
+}
+
+.sidebar h2 {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    color: var(--primary);
+}
+
+.sidebar nav a {
+    display: block;
+    color: #94a3b8;
+    text-decoration: none;
+    padding: 10px 0;
+    transition: 0.3s;
+}
+
+.sidebar nav a:hover {
+    color: white;
+}
+
+.sidebar-footer {
+    position: absolute;
+    bottom: 2rem;
+    width: calc(100% - 4rem);
+}
+
+/* Content */
+.content {
+    margin-left: 260px;
+    padding: 2rem 4rem;
+    width: 100%;
+    padding-bottom: 100px;
+}
+
+.card {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    border: 1px solid var(--border);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+h3 {
+    margin-top: 0;
+    font-size: 1.1rem;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Forms */
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #64748b;
+}
+
+input,
+select {
+    padding: 10px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    width: 100%;
+}
+
+.checkbox-row {
+    display: flex;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.checkBoxOnly {
+    display: flex !important;
+}
+
+.event-chips {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+    background: #f8fafc;
+    padding: 15px;
+    border-radius: 6px;
+}
+
+/* Toggles */
+.toggle {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.slider {
+    width: 40px;
+    height: 20px;
+    background: #cbd5e1;
+    border-radius: 20px;
+    position: relative;
+    transition: 0.3s;
+}
+
+.slider::before {
+    content: "";
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    background: white;
+    border-radius: 50%;
+    top: 2px;
+    left: 2px;
+    transition: 0.3s;
+}
+
+input:checked+.slider {
+    background: var(--primary);
+}
+
+input:checked+.slider::before {
+    transform: translateX(20px);
+}
+
+input[type="checkbox"] {
+    display: none;
+}
+
+/* Task Cards */
+.task-item {
+    background: #f8fafc;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--border);
+    position: relative;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.remove-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    color: var(--danger);
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* Methods Section */
+.methods-section {
+    margin-top: 20px;
+    border-top: 1px dashed var(--border);
+    padding-top: 15px;
+}
+
+.methods-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.methods-header span {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #64748b;
+}
+
+.method-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 8px;
+    align-items: center;
+}
+
+.method-row input {
+    padding: 8px;
+    font-size: 0.9rem;
+}
+
+.btn-icon-remove {
+    background: #fee2e2;
+    color: var(--danger);
+    border: none;
+    width: 30px;
+    height: 36px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Buttons */
+.btn {
+    padding: 10px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    border: none;
+    font-weight: 500;
+}
+
+.btn-primary {
+    background: var(--primary);
+    color: white;
+}
+
+.btn-secondary {
+    background: #334155;
+    color: white;
+    width: 100%;
+}
+
+.btn-add {
+    background: #10b981;
+    color: white;
+    font-size: 0.85rem;
+}
+
+.btn-add-sm {
+    background: #e2e8f0;
+    color: var(--text);
+    padding: 5px 10px;
+    font-size: 0.75rem;
+}
+
+.btn-save {
+    background: var(--primary);
+    color: white;
+    padding: 12px 40px;
+}
+
+.bottom-bar {
+    position: fixed;
+    bottom: 0;
+    left: 260px;
+    right: 0;
+    background: white;
+    padding: 1rem 4rem;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: flex-end;
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+.modal-content {
+    background: white;
+    margin: 5% auto;
+    padding: 2rem;
+    width: 60%;
+    border-radius: 8px;
+    position: relative;
+}
+
+.close {
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+pre {
+    background: #1e293b;
+    color: #34d399;
+    padding: 1.5rem;
+    border-radius: 6px;
+    overflow: auto;
+    max-height: 400px;
+}

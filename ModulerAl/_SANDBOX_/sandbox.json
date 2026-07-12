@@ -1,0 +1,86 @@
+{
+    "EmailDetail": {
+        "Sender": "Nandhu.RajeshN@williamslea.com",
+        "ReportName": "Expense Report for Scott Ward - re New Orleans Caesar's Hotel Expenses",
+        "SentOn": "2026-03-11",
+        "Body": "Good evening WLARC, Would you please create an expense report, for Scott Ward, as outlined below. Details are below and all receipts are attached. The document entitled, "Charges per person" can be added to the report versus an individual receipt. Many thanks! Dec 13-14, 2025 New Orleans, LA "Legislator's Hotel Expenses for New Orleans Event" Total: $4509.54 C/M: Split 50/50 between DraftKings (32188.2) and Fanatics (49923.2) Notes: 1. I included a pdf of an excel doc that shows the total for each person if that is easier for you to use so you don' have to go through every folio. I also included a print out of the Amex charges for reference but not sure that is needed. 2. The clients agreed to cover the expenses for the legislators' trip and the only way to do that from a compliance and reporting stand point that made sense was for me to pay for them all and then Orrick bill it back appropriately. FanDuel, BetMGM and Bet365 are covering other portions of the trip so that is why these are going to DK and Fanatics only. 3. There are some restaurant and other misc charges on these folios. Basically anyone above $151.48. I suspect it is all food. A few of them got real excited about having someone else's credit card on their room and charged things back to the room. I won't be able to get any further documentation for any of these or what they actually were. They were all personal to the specific person who charged them. Let me know if that is a problem so we can figure out a solution.",
+        "OnBehalfOf": "Scott Ward",
+        "EmailSummary": "Request to create an expense report for Scott Ward's hotel expenses in New Orleans for a legislator's event, totaling $4509.54, to be split between DraftKings and Fanatics.",
+        "Client": "DraftKings, Fanatics",
+        "Task": "Legislator's Hotel Expenses for New Orleans Event",
+        "Country Code": "",
+        "attachmentCount": 1
+    },
+    "TableofContent": [
+        {
+            "TOC_desc": "Hotel Expenses",
+            "TOC_amount": 4509.54,
+            "date": "2025-12-13",
+            "additional_info": "Split 50/50 between DraftKings (32188.2) and Fanatics (49923.2)"
+        }
+    ],
+    "ReceiptContent": [
+        {
+            "filename": "Albert Butler Folio.pdf",
+            "document type": "Hotel Folio",
+            "extraction_failed_reason": "",
+            "MerchantName": "Caesars",
+            "receiptdate": "15.12.2025",
+            "currency": "USD",
+            "TotalAmount": 302.96,
+            "amountindollars": 302.96,
+            "Location": "Wheeling GOC Office (WH)",
+            "Billiable/Non-Billable": "Non-Billable",
+            "lines": [
+                {
+                    "Narrative": "OCCUPANCY FEE",
+                    "amount": 2.00,
+                    "GL": "General - Travel - Hotel (G001)",
+                    "GLReason": "[Source: Expense-Type-Documentation.xlsx] | [Match: \"General - Travel - Hotel (G001)\"] | [Reason: The narrative \"OCCUPANCY FEE\" is related to hotel expenses, which matches the Excel row for hotel-related charges.]"
+                },
+                {
+                    "Narrative": "RESORT FEE",
+                    "amount": 22.98,
+                    "GL": "General - Travel - Hotel (G001)",
+                    "GLReason": "[Source: Expense-Type-Documentation.xlsx] | [Match: \"General - Travel - Hotel (G001)\"] | [Reason: The narrative \"RESORT FEE\" is a common charge associated with hotel stays, matching the Excel row for hotel-related expenses.]"
+                },
+                {
+                    "Narrative": "ROOM CHARGE CT 744",
+                    "amount": 110.00,
+                    "GL": "General - Travel - Hotel (G001)",
+                    "GLReason": "[Source: Expense-Type-Documentation.xlsx] | [Match: \"General - Travel - Hotel (G001)\"] | [Reason: The narrative \"ROOM CHARGE\" clearly indicates a hotel room expense, which corresponds to the Excel row for hotel charges.]"
+                },
+                {
+                    "Narrative": "SALES",
+                    "amount": 16.50,
+                    "GL": "General - Travel - Hotel (G001)",
+                    "GLReason": "[Source: Expense-Type-Documentation.xlsx] | [Match: \"General - Travel - Hotel (G001)\"] | [Reason: The \"SALES\" charge is likely a tax or fee related to the hotel stay, which falls under the same category as other hotel expenses.]"
+                },
+                {
+                    "Narrative": "OCCUPANCY FEE",
+                    "amount": 2.00,
+                    "GL": "General - Travel - Hotel (G001)",
+                    "GLReason": "[Source: Expense-Type-Documentation.xlsx] | [Match: \"General - Travel - Hotel (G001)\"] | [Reason: The narrative \"OCCUPANCY FEE\" is related to hotel expenses, which matches the Excel row for hotel-related charges.]"
+                },
+                {
+                    "Narrative": "RESORT FEE",
+                    "amount": 22.98,
+                    "GL": "General - Travel - Hotel (G001)",
+                    "GLReason": "[Source: Expense-Type-Documentation.xlsx] | [Match: \"General - Travel - Hotel (G001)\"] | [Reason: The narrative \"RESORT FEE\" is a common charge associated with hotel stays, matching the Excel row for hotel-related expenses.]"
+                },
+                {
+                    "Narrative": "ROOM CHARGE CT 744",
+                    "amount": 110.00,
+                    "GL": "General - Travel - Hotel (G001)",
+                    "GLReason": "[Source: Expense-Type-Documentation.xlsx] | [Match: \"General - Travel - Hotel (G001)\"] | [Reason: The narrative \"ROOM CHARGE\" clearly indicates a hotel room expense, which corresponds to the Excel row for hotel charges.]"
+                },
+                {
+                    "Narrative": "SALES",
+                    "amount": 16.50,
+                    "GL": "General - Travel - Hotel (G001)",
+                    "GLReason": "[Source: Expense-Type-Documentation.xlsx] | [Match: \"General - Travel - Hotel (G001)\"] | [Reason: The \"SALES\" charge is likely a tax or fee related to the hotel stay, which falls under the same category as other hotel expenses.]"
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,98 @@
+body {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  background: #f4f6f8;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+}
+
+.panel {
+  background: white;
+  padding: 12px;
+  border-radius: 6px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+}
+
+textarea {
+  width: 100%;
+  height: 180px;
+  font-family: monospace;
+  margin-bottom: 8px;
+}
+
+button {
+  padding: 8px 10px;
+  margin-top: 5px;
+}
+
+.section {
+  border: 1px solid #ccc;
+  padding: 12px;
+  margin-bottom: 15px;
+  background: white;
+}
+
+/* TABLE */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  border: 1px solid #aaa;
+  padding: 6px;
+}
+
+/* CARD + FORM LAYOUT */
+.card-form-layout {
+  display: grid;
+  grid-template-columns: 30% 70%;
+  gap: 10px;
+}
+
+.card-list {
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+
+.card {
+  border: 1px solid #aaa;
+  padding: 6px;
+  margin-bottom: 6px;
+  cursor: pointer;
+  background: #f9f9f9;
+}
+
+.card:hover {
+  background: #e6e6e6;
+}
+
+.form-editor {
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+
+.field {
+  margin-bottom: 10px;
+}
+
+label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+input {
+  width: 100%;
+  padding: 6px;
+}
+
+.array-item {
+  border: 1px dashed #aaa;
+  padding: 8px;
+  margin-bottom: 6px;
+}

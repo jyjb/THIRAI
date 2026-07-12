@@ -1,0 +1,20 @@
+# --- .NET build output ---
+bin/
+obj/
+[Dd]ebug/
+[Rr]elease/
+*.user
+.vs/
+
+# --- Rider / JetBrains ---
+.idea/
+
+# --- Playwright (build-time browser download; never committed) ---
+**/playwright/.local-browsers/
+
+# --- Vendored LOCALSERVER binary (fetched via build_test/pull-localserver.ps1) ---
+build_test/localserver/
+
+# --- OS noise ---
+.DS_Store
+Thumbs.db

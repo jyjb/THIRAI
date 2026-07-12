@@ -1,0 +1,60 @@
+{"id":"home","pagekey":"landing-page","title":"BPI ShowCase 360","parent":"","type":"card-page","webhook":"","child":"","content":{},"isvisible":true}
+{"id":"pushintelligence","pagekey":"push-intelligence-page","title":"Push Intelligence","parent":"home","type":"card-page","webhook":"","child":"","content":{},"isvisible":true}
+{"id":"opqm","pagekey":"operation-queuemanagement-page","title":"Operations Queue Management","parent":"pushintelligence","type":"powerbi-page","webhook":"","child":"","content":{},"isvisible":true}
+{"id":"insuranceNewBusiess","pagekey":"video-page","title":"Insurance New Business","parent":"demovideos","type":"video-page","webhook":"","child":"","content":{},"isvisible":true}
+{"id":"timeentry","pagekey":"time-entry-page","title":"Project Time Entry","parent":"pointsolutions","type":"time-entry-page","webhook":"","child":"","content":{"datafileid":"1ab3C_WIcDWOnIghv00ri-yL5XdMUzY86","datafilename":".solutions/_timeentry/data.json","templatefilename":".templates/timedataentry.html"},"isvisible":true}
+
+
+
+<body>
+
+    <div class="jsLayout">
+        <header class="pages">
+            <h1>JSONL Configuration Manager</h1>
+        </header>
+
+
+
+
+
+        <content class="pages">
+            <div class="tabbed-page">
+                <div class="tab-controls">
+                    <button class="btn-style back-btn btnSize"
+                        onclick=" location.href = '../../index.html'">home</button>
+                    <button class="btn-style btnSize" onclick="setAppPageData()">Save Data</button>
+                    <button class="btn-style btnSize" onclick="toggleJSONLView()">View JSONL Source</button>
+                </div>
+
+                <div class="tab-content">
+                    <div class="left-container content-fullsize">
+                        <div class="left-search">
+                            <input type="text" class="searchbar" id="searchInput" placeholder="Search pages..."
+                                onkeyup="filterList()">
+                        </div>
+                        <div class="left-content" id="listContainer">
+                        </div>
+                        <div class="left-controls">
+                            <button class="btn-style btnSize" onclick="addNewEntry()">+ Add New Page</button>
+                        </div>
+                    </div>
+
+                    <div class="right-container">
+                        <div class="right-tab">
+                            <span id="current-id-display" style="font-weight:bold; color: var(--logo-blue);">No
+                                Selection</span>
+                        </div>
+                        <div class="right-content">
+                            <div class="form-container content-fullsize" id="formContainer">
+                                <div style="text-align:center; padding: 50px; color: #aaa;">Select an item from the left
+                                    to edit</div>
+                            </div>
+                        </div>
+                        <div class="right-controls">
+                            <button class="btn-style btnSize" onclick="saveCurrentForm()">Save Changes</button>
+                            <button class="btn-style back-btn btnSize" onclick="deleteCurrentEntry()">Delete</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </content>

@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    Thirai Verifier (spec 15.4) native C# / .NET 10, BCL only, no NuGet.
+    Publish to a single self-contained executable (see README for the exact
+    command). Zero third-party dependencies keeps the tool as auditable as the
+    framework it guards (Directive 0). Deterministic output needs invariant
+    culture.
+  -->
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <AssemblyName>thirai-verify</AssemblyName>
+    <RootNamespace>Thirai.Verify</RootNamespace>
+    <LangVersion>latest</LangVersion>
+    <InvariantGlobalization>true</InvariantGlobalization>
+    <SelfContained>false</SelfContained>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+
+</Project>

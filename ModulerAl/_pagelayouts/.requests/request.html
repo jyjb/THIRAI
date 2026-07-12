@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dynamic Form + PDF Overlay</title>
+    <link rel="stylesheet" href="../../_styles/index.css">
+    <link rel="stylesheet" href="pdfForm.css">
+    <script src="../../_scripts/initator.js"></script>
+    <script src="../../_scripts/loader.js"></script>
+    <script src="../../_scripts/generics.js"></script>
+    <script src="../../_scripts/sandbox.js"></script>
+
+</head>
+
+<body>
+    <h2>Document Uploader</h2>
+    <input type="file" id="fileInput" multiple />
+    <button onclick="uploadFile()">Upload Document</button>
+    <p id="status"></p>
+
+    <script src="request.js"></script>
+</body>
+
+</html>

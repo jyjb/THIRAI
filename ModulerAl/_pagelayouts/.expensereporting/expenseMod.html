@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adrent Expert Expense - Dynamic Demo</title>
+    <link rel="stylesheet" href="expenseMode.css">
+    
+    <script src="../../_scripts/initator.js"></script>
+    <script src="../../_scripts/loader.js"></script>
+    <script src="../../_scripts/generics.js"></script>
+    <script src="../../_scripts/viewFIle.js"></script>
+    <script src="expenseMode.js"></script>
+</head>
+
+<body>
+
+    <div class="app-window">
+        <div class="title-bar">
+            <div class="title-bar-text">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path
+                        d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z">
+                    </path>
+                    <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                    <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                </svg>
+                Expense Report-Demo
+            </div>
+            <div style="display: flex; gap: 8px;">
+                <div style="width: 12px; height: 12px; border-radius: 50%; background: #e2e8f0;"></div>
+                <div style="width: 12px; height: 12px; border-radius: 50%; background: #e2e8f0;"></div>
+                <div style="width: 12px; height: 12px; border-radius: 50%; background: #ef4444;"></div>
+            </div>
+        </div>
+
+        <div id="page1" class="page-content active-page">
+            <div class="nav-header">
+                <h2>Expense Reports</h2>
+            </div>
+            <div id="loading-msg" class="loading">Loading data from JSON...</div>
+            <div class="table-container" id="report-table-container" style="display: none;">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Report Name</th>
+                            <th>Date</th>
+                            <th>Status</th>
+                            <th style="text-align: right;">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="page1-tbody">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div id="page2" class="page-content">
+            <div class="nav-header">
+                <a class="back-link" onclick="navigate('page1')">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="19" y1="12" x2="5" y2="12"></line>
+                        <polyline points="12 19 5 12 12 5"></polyline>
+                    </svg>
+                    Back to Reports
+                </a>
+                <h2 id="page2-header">Line Items</h2>
+            </div>
+
+            <div class="table-container">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Receipt ID</th>
+                            <th>Vendor Name</th>
+                            <th>Receipt Date</th>
+                            <th>Total Amt</th>
+                            <th style="text-align: right;">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="page2-tbody">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div id="page3" class="page-content">
+            <a class="back-link" onclick="navigate('page2')">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="19" y1="12" x2="5" y2="12"></line>
+                    <polyline points="12 19 5 12 12 5"></polyline>
+                </svg>
+                Back to Line Items
+            </a>
+
+            <div class="toolbar">
+                <button class="tool-btn">
+                    <div class="tool-dot" style="background: var(--primary-blue);"></div> Save & Add
+                </button>
+                <button class="tool-btn">
+                    <div class="tool-dot" style="background: var(--primary-blue);"></div> Save & Close
+                </button>
+                <button class="tool-btn">
+                    <div class="tool-dot" style="background: var(--danger);"></div> Cancel
+                </button>
+                <div style="width: 1px; background: var(--border-light); margin: 0 4px;"></div>
+                <button class="tool-btn">Duplicate</button>
+                <button class="tool-btn">Move</button>
+                <button class="tool-btn">Delete</button>
+                <div style="width: 1px; background: var(--border-light); margin: 0 4px;"></div>
+                <button class="tool-btn">
+                    <div class="tool-dot" style="background: var(--success);"></div> Policy Check
+                </button>
+            </div>
+
+            <div class="form-grid">
+                <div class="form-label">Expense Type</div>
+                <input type="text" id="f-expense-type" class="form-input" readonly>
+
+                <div class="form-label">Date</div>
+                <input type="text" id="f-date" class="form-input input-medium" readonly>
+
+                <div class="form-label">Total</div>
+                <div class="flex-row">
+                    <input type="text" id="f-currency" class="form-input input-short" readonly>
+                    <input type="text" id="f-total" class="form-input input-medium" style="text-align: right;" readonly>
+                </div>
+
+                <div class="form-label">Merchant</div>
+                <input type="text" id="f-merchant" class="form-input" readonly> 
+
+                <div class="form-label">Comment</div>
+                <input type="text" id="f-comment" class="form-input" readonly>
+
+                <div class="form-label">Jurisdiction</div>
+                <input type="text" class="form-input" value="Default Tax Jurisdiction (FIRM)" readonly>
+
+                <div class="form-label">Location</div>
+                <input type="text" id="f-location" class="form-input" readonly>
+
+                <div class="form-label">Country Code</div>
+                <input type="text" class="form-input input-short" value="US" readonly>
+
+                <div class="form-label">Attachment</div>
+                <button class="btn" id = "btAttachment"
+                    style="justify-content: flex-start; background: var(--disabled-bg); color: var(--text-muted); cursor: default;">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        style="margin-right: 6px;">
+                        <path
+                            d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48">
+                        </path>
+                    </svg>
+                    <span id="f-attachment"></span>
+                </button>
+
+                <div class="section-divider"></div>
+
+                <div class="section-title" id="f-billable-title">Billable Details:</div>
+
+                <div class="form-label">Office</div>
+                <input type="text" class="form-input" value="Wheeling (WH)" readonly>
+
+                <div class="form-label">Department</div>
+                <input type="text" class="form-input" value="Client Services" readonly>
+
+                <div class="form-label">Client</div>
+                <input type="text" id="f-client" class="form-input" readonly>
+
+                <div class="form-label">General Ledger</div>
+                <input type="text" id="f-gl" class="form-input" readonly>
+
+                <div class="form-label">Employee</div>
+                <input type="text" id="f-employee" class="form-input" readonly>
+
+                <div class="form-label">Narrative</div>
+                <input type="text" id="f-narrative" class="form-input" readonly>
+
+                <div class="form-label">Amount</div>
+                <input type="text" id="f-amount" class="form-input input-medium" style="text-align: right;" readonly>
+
+                <div></div>
+                <div style="margin-top: 8px;">
+                    <span style="color: var(--success); font-weight: bold; margin-right: 4px;">+</span>
+                    <span style="color: var(--text-muted); font-size: 0.875rem;">Manage Splits</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Run the load function when the page finishes loading
+        window.addEventListener('DOMContentLoaded', loadPage('report','.solutions/expenseprocessing'));
+    </script>
+</body>
+
+</html>

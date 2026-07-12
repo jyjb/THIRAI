@@ -1,0 +1,30 @@
+<div id="main-tab-page-content" class="tabbed-page">
+    <div id="tab-controls-container" class="tab-controls hidden"> </div>
+    <div id="tab-content-container" class="tab-content">
+        <div id="tab-left-container" class="left-container">
+            <div id="tab-left-search-container" class="left-search hidden">
+                <input id="search-cards-below" class="searchbar" type="text"
+                    title="Please enter the search terms here..." placeholder="Search...">
+            </div>
+            <div id="tab-left-content-container" class="left-content">
+                <a> NOTHING TO DISPLAY </a>
+            </div>
+            <div id="tab-left-controls-container" class="left-controls hidden">
+
+            </div>
+        </div>
+        <div id="tab-right-container" class="right-container">
+            <div id="tab-right-tab-container" class="right-tab hidden"> </div>
+            <div id="tab-right-content-container" class="right-content"> </div>
+            <div id="tab-right-controls-container" class="right-controls">
+                <button title="Cancel/Reset form" class="back-btn btnSize" onclick="clearForm();"> Cancel </button>
+                <button title="Save/Submit form" class="btn-style btnSize" id="save-form"
+                    onclick="setdriveFileContent(getFormData());"> Save </button>
+                <button title="Add a new data to form" class="btn-style btnSize hidden" onclick="clearForm();"> Add
+                </button>
+                <button id="results-pop-show" title="View Output Json" class="btn-style btnSize"
+                    onclick="showNotification(getFormData(), 'result');"> View Result
+                </button>
+            </div>
+        </div>
+    </div>
