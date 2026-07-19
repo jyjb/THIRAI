@@ -1,1 +1,22 @@
+# --- Claude Code / editor state (never shared) ---
+.claude/
+.vscode/
+.idea/
+.vs/
 
+# --- .NET build output ---
+bin/
+obj/
+[Dd]ebug/
+[Rr]elease/
+*.user
+
+# --- Node / web ecosystems ---
+node_modules/
+
+# --- OS noise ---
+.DS_Store
+Thumbs.db
+
+# --- Large/binary bundles: build these, don't commit them ---
+*.zip
